@@ -13,7 +13,7 @@ const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
 const pokemon:Pokemon = await res.json()
 ---
 
-<article>
-  <h1>{pokemon.name}</h1>
-  <img src={pokemon.sprites?.front_default}>
+<article class=" border">
+  <a href={`/pokemon/${pokemonName}`}><img class="w-24 items-center" src={pokemon.sprites?.front_default}></a>
+  <h2>{pokemon.name}</h2>
 </article>

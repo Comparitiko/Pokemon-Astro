@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import {type Pokedex, type Result} from '../types/API-pokedex'
+
+export async function getStaticPaths() {
+  const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`)
+  const pokedex = await res.json()
+  return pokedex.results.map((pokemon) => ({
+    params: {name: pokemon.name},
+  }))
+}
+
+const name = Astro.params
+
+const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name.name}`)
+const pokemon = await res.json()
+
+---
+
+<Layout title={name.name}>
+  <main>
+    <h1>{pokemon.name}</h1>
+  </main>
+</Layout>
