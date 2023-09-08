@@ -11,15 +11,20 @@ export async function getStaticPaths() {
   }))
 }
 
-const {name} = (Astro.params)
 
-const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name.name}`)
+
+const name = (Astro.params).name
+
+const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
 const pokemon: Pokemon = await res.json()
 
 ---
 
-<Layout title={`${pokemon.name}`}
-  <main>
-    <h1>{pokemon.name}</h1>
+<Layout title={`Pokemon Web Page | ${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`}>
+  <main class="m-auto">
+    <article class="border border-black px-1 ">
+      <img class=" w-60" src={pokemon.sprites?.front_default} alt=`Pokemon: ${pokemon.name}`>
+      <h1>{`${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`}</h1>
+    </article>
   </main>
 </Layout>

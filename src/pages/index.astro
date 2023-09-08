@@ -5,7 +5,7 @@ import {type Pokedex, type Result } from '../types/API-pokedex'
 
 const offset = 0
 
-const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=100&offset=${offset}`)
+const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=40&offset=${offset}`)
 const pokedex:Pokedex = await res.json()
 ---
 

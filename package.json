@@ -1,5 +1,5 @@
 {
-  "name": "pruebas",
+  "name": "pokemon-web-page",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,8 +10,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/tailwind": "^5.0.0",
-    "astro": "^3.0.9",
-    "tailwindcss": "^3.3.3"
+    "@astrojs/tailwind": "5.0.0",
+    "astro": "3.0.9",
+    "tailwindcss": "3.3.3"
   }
 }
