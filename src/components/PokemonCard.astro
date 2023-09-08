@@ -12,8 +12,7 @@ console.log(pokemonName)
 const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
 const pokemon:Pokemon = await res.json()
 
-const fixedPokemonName = `${pokemon.name[0].toUpperCase()}${pokemon.name}`
-console.log(fixedPokemonName)
+const fixedPokemonName = `${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`
 ---
 
 <article class=" border">

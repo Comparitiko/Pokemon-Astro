@@ -11,7 +11,7 @@ export async function getStaticPaths() {
   }))
 }
 
-const name = (Astro.params)
+const {name} = (Astro.params)
 
 const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name.name}`)
 const pokemon: Pokemon = await res.json()
