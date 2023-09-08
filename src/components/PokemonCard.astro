@@ -11,11 +11,14 @@ console.log(pokemonName)
 
 const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
 const pokemon:Pokemon = await res.json()
+
+const fixedPokemonName = `${pokemon.name[0].toUpperCase()}${pokemon.name}`
+console.log(fixedPokemonName)
 ---
 
 <article class=" border">
   <a href={`/pokemon/${pokemonName}`}>
     <img class="w-24 items-center" src={pokemon.sprites?.front_default}>
-    <h2>{pokemon.name}</h2>
+    <h2>{fixedPokemonName}</h2>
   </a>
 </article>
