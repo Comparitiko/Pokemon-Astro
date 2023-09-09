@@ -1,0 +1,14 @@
+---
+import { getTypeStyle } from '../funcs/GetTypeStyle'
+
+interface Props {
+  type: string
+}
+
+const {type} = Astro.props
+
+const typeStyle = getTypeStyle(type)
+
+---
+
+<h1 class={typeStyle}>{type}</h1>

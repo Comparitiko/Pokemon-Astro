@@ -31,7 +31,7 @@ export interface Ability {
 }
 
 export interface Species {
-  name?: string;
+  name: string;
   url?:  string;
 }
 
@@ -181,5 +181,5 @@ export interface Stat {
 
 export interface Type {
   slot?: number;
-  type?: Species;
+  type: Species;
 }

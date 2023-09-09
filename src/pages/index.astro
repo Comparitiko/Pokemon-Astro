@@ -2,19 +2,25 @@
 import Layout from '../layouts/Layout.astro'
 import PokemonCard from '../components/PokemonCard.astro'
 import {type Pokedex, type Result } from '../types/API-pokedex'
+import PagesButtons from '../components/Pages-Buttons.astro'
 
 const offset = 0
 
-const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=40&offset=${offset}`)
+const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=50&offset=${offset}`)
 const pokedex:Pokedex = await res.json()
 ---
 
 <Layout title="Pokemon Web Page">
-	<main class="flex gap-1 flex-wrap">
-		{	
-			pokedex.results.map((pokemon: Result) => (				
-				<PokemonCard pokemonName={pokemon.name} />
-			))
-		}
+	<main class="py-1 px-2">
+		<div class="grid grid-cols-5 gap-1">
+			{	
+				pokedex.results.map((pokemon: Result) => (				
+					<PokemonCard pokemonName={pokemon.name} />
+				))
+			}
+		</div>
+		<div>
+			<PagesButtons totalPokemons={pokedex.count}/>
+		</div>
 	</main>
 </Layout>
