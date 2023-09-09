@@ -1,0 +1,22 @@
+---
+interface Props {
+  type: string
+}
+
+const {type} = Astro.props
+
+const fixedTypeName = `${type[0].toUpperCase()}${type.slice(1)}`
+---
+
+<h1 class:list={[
+  "rounded-xl border py-0.5 px-1 text-slate-100",
+  {
+    "bg-green-500 border-green-700": type === 'grass',
+    "bg-purple-500 border-purple-700": type === 'poison',
+    "bg-red-500 border-red-700": type === 'fire',
+    "bg-yellow-900 border-yellow-950": type === 'ground',
+  }
+]}>
+{fixedTypeName}
+</h1>
+<h2 class=" bg-"></h2>
