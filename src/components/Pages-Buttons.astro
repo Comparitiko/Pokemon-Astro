@@ -1,12 +1,27 @@
 ---
+import { changeOffset } from '../pages/index.astro'
+
 interface Props {
   totalPokemons: number
 }
 
 const {totalPokemons} = Astro.props
+
+const pages = Math.ceil(totalPokemons / 50)
+
+const pageNumbers = Array.from({ length: pages }, (_, index) => index + 1);
+
+function handleclick (page: number) {
+  const newoffset = page * 50 - 1
+  changeOffset(newoffset)
+}
+
 ---
 
-<article>
-  <h1>{totalPokemons}</h1>
-  <h2>50</h2>
+<article class="flex gap-2">
+  {
+    pageNumbers.map(pageNumber => (
+      <button onclick={handleclick(pageNumber)}class="border w-8 h-8 hover:bg-slate-400">{pageNumber}</button>
+    ))
+  }
 </article>

@@ -4,7 +4,12 @@ import PokemonCard from '../components/PokemonCard.astro'
 import {type Pokedex, type Result } from '../types/API-pokedex'
 import PagesButtons from '../components/Pages-Buttons.astro'
 
-const offset = 0
+let offset = 0
+
+export function changeOffset (newoffset: number) {
+	offset = newoffset
+}
+
 
 const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=50&offset=${offset}`)
 const pokedex:Pokedex = await res.json()
@@ -19,7 +24,7 @@ const pokedex:Pokedex = await res.json()
 				))
 			}
 		</div>
-		<div>
+		<div class="my-2 justify-center items-center">
 			<PagesButtons totalPokemons={pokedex.count}/>
 		</div>
 	</main>

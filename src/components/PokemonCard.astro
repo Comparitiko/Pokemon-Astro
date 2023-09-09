@@ -14,9 +14,9 @@ const pokemon:Pokemon = await res.json()
 const fixedPokemonName = `${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`
 ---
 
-<article class=" border py-2 grid justify-center text-center hover:bg-slate-400 h-auto">
+<article class=" border py-4 grid justify-center text-center hover:bg-slate-400 w-auto h-auto">
   <a href={`/pokemon/${pokemonName}`}>
-    <img class="w-28 items-center" src={pokemon.sprites?.other?.home?.front_default}>
+    <img class="w-20 h-20 items-center" src={pokemon.sprites?.other?.home?.front_default}>
     <h2>{fixedPokemonName}</h2>
     <div class="flex gap-2 justify-center">
       {
