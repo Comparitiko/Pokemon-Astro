@@ -1,4 +1,6 @@
 ---
+import {  } from 'astro/types'
+
 interface Props {
   totalPokemons: number
 }
@@ -14,7 +16,7 @@ const pageNumbers = Array.from({ length: pages }, (_, index) => index + 1);
 <article class="flex gap-2">
   {
     pageNumbers.map(pageNumber => (
-      <button onclick={console.log(`boton pulsado: ${pageNumber}`)}class="border w-8 h-8 hover:bg-slate-400">{pageNumber}</button>
+      <button class="border w-8 h-8 hover:bg-slate-400">{pageNumber}</button>
     ))
   }
 </article>

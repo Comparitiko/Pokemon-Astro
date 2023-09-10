@@ -4,7 +4,7 @@ import PokemonCard from '../components/PokemonCard.astro'
 import {type Pokedex, type Result } from '../types/API-pokedex'
 import PagesButtons from '../components/Pages-Buttons.astro'
 
-let offset = 1250
+let offset = 0
 
 const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=50&offset=${offset}`)
 const pokedex:Pokedex = await res.json()
