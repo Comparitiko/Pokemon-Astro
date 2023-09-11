@@ -2,12 +2,22 @@
 import Layout from '../layouts/Layout.astro'
 import PokemonCard from '../components/PokemonCard.astro'
 import {type Pokedex, type Result } from '../types/API-pokedex'
-import PagesButtons from '../components/Pages-Buttons.astro'
+import Button from '../components/Button.astro'
 
 let offset = 0
 
+export function changeOffset (pageNumber: number) {
+		const newOffset = (pageNumber - 1) * 50
+		offset = newOffset
+	}
+	
 const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=50&offset=${offset}`)
 const pokedex:Pokedex = await res.json()
+
+
+const pages = Math.ceil(pokedex.count / 50)
+
+const pageNumbers = Array.from({ length: pages }, (_, index) => index + 1)
 ---
 
 <Layout title="Pokemon Web Page">
@@ -19,8 +29,12 @@ const pokedex:Pokedex = await res.json()
 				))
 			}
 		</div>
-		<div class="my-2 justify-center items-center">
-			<PagesButtons totalPokemons={pokedex.count}/>
+		<div class="flex my-2 items-center gap-4">
+			{
+				pageNumbers.map((pageNumber: number) => (
+					<Button pageNumber={pageNumber} />
+				))
+			}
 		</div>
 	</main>
 </Layout>

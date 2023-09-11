@@ -1,0 +1,8 @@
+---
+interface Props {
+  pageNumber: number
+}
+const {pageNumber} = Astro.props
+---
+
+<button class="border px-1 py-1 text-center hover:bg-slate-400 w-8 h-8">{pageNumber}</button>
