@@ -1,0 +1,21 @@
+---
+import {type Types, type Result} from '../../types/API-types'
+import {getAllTypes, getTypeData} from '../../lib/api'
+import Layout from '../../layouts/Layout.astro'
+
+export async function getStaticPaths() {
+  const types: Types = await getAllTypes()
+  return types.results.map((Pokemontype: Result) => ({
+    params: {type: Pokemontype.name},
+  }))
+}
+
+const type = (Astro.params).type
+
+if (type === undefined) {Astro.redirect('/404')}
+const typeData = await getTypeData(type || 'undefined')
+
+---
+<Layout title={`Pokemon Web Page | ${type[0].toUpperCase()}`}>
+  <h1>{type}</h1>
+</Layout>
