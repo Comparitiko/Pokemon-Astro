@@ -1,11 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro'
-import type { Pokemon } from '../../types/API-pokemon'
-import {type Pokedex, type Result} from '../../types/API-pokedex'
+import {getAllPokedex, getPokemonByName} from '../../lib/api'
+import {type Result} from '../../types/API-pokedex'
 
 export async function getStaticPaths() {
-  const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`)
-  const pokedex: Pokedex = await res.json()
+  const pokedex = await getAllPokedex()
   return pokedex.results.map((pokemon: Result) => ({
     params: {name: pokemon.name},
   }))
@@ -15,15 +14,15 @@ export async function getStaticPaths() {
 
 const name = (Astro.params).name
 
-const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
-const pokemon: Pokemon = await res.json()
+if (name === undefined) {Astro.redirect('/404')}
+const pokemon = await getPokemonByName(name || 'undefined')
 
 ---
 
 <Layout title={`Pokemon Web Page | ${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`}>
   <main class="m-auto">
     <article class="border border-black px-1 ">
-      <img class=" w-60" src={pokemon.sprites?.front_default} alt=`Pokemon: ${pokemon.name}`>
+      <img class=" w-60" src={pokemon.sprites?.front_default} alt=`Pokemon: ${pokemon.name}` loading="lazy">
       <h1>{`${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`}</h1>
     </article>
   </main>
