@@ -1,6 +1,6 @@
 import type { Pokedex } from "../types/API-pokedex"
 import type { Pokemon } from "../types/API-pokemon"
-import type { Type, Types } from "../types/API-pokemon"
+import type { Type, Types } from "../types/API-types"
 
 export async function getPokemonByName (name:string) {
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
@@ -22,12 +22,12 @@ export async function getPokemonWithLimit(offset:number) {
 
 export async function getAllTypes () {
   const res = await fetch(`https://pokeapi.co/api/v2/type/`)
-  const type = await res.json()
+  const type: Type = await res.json()
   return type
 }
 
 export async function getTypeData(type:string) {
   const res = await fetch(`https://pokeapi.co/api/v2/type/${type}`)
-  const typeData: = await res.json()
+  const typeData: Types = await res.json()
   return typeData
 }
