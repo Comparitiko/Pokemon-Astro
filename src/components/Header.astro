@@ -3,6 +3,8 @@ import { Image } from "astro:assets";
 import Logo from '../assets/Pokémon.png'
 ---
 
-<header class="bg-gray-800 top-0 w-full">
-  <a href="/"><Image class="w-48 mx-auto" title="Volver a inicio" src={Logo} alt="Pokemon Logo"></a>
+<header class="bg-gray-800 top-0 w-full sticky">
+  <div class="w-48 mx-auto">
+    <a href="/"><Image title="Volver a inicio" src={Logo} alt="Pokemon Logo"></a>
+  </div>
 </header>

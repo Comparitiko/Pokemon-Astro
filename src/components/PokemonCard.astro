@@ -16,7 +16,7 @@ const fixedPokemonName = `${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1
 
 <article class=" border py-2 grid gap-2 justify-center items-center text-center hover:bg-slate-400 w-auto h-64">
   <a title={`Watch ${pokemonName} data`} href={`/pokemon/${pokemonName}`}>
-    <img class="w-24 h-24 my-4 mx-auto" src={pokemon.sprites?.other?.home?.front_default || pokemon.sprites?.front_default} alt="No image">
+    <img class="w-24 h-24 my-4 mx-auto" src={pokemon.sprites?.other?.['official-artwork']?.front_default || pokemon.sprites?.front_default} alt="No image">
   </a>
   <h2>{fixedPokemonName}</h2>
   <div class="flex gap-2 justify-center">

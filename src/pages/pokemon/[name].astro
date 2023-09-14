@@ -1,4 +1,5 @@
 ---
+import PokemonsType from '../../components/PokemonsType.astro'
 import Layout from '../../layouts/Layout.astro'
 import {getAllPokedex, getPokemonByName} from '../../lib/api'
 import {type Result} from '../../types/API-pokedex'
@@ -21,9 +22,26 @@ const pokemon = await getPokemonByName(name || 'undefined')
 
 <Layout title={`Pokemon Web Page | ${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`}>
   <main class="py-1 px-2">
-    <article class="border border-black px-1 ">
-      <img class=" w-60" src={pokemon.sprites?.front_default} alt=`Pokemon: ${pokemon.name}` loading="lazy">
-      <h1>{`${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`}</h1>
+    <article class="border border-black px-1 grid justify-center">
+      <div class="flex flex-col text-center">
+        <h1>{`${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`}</h1>
+        <img class=" w-60" src={pokemon.sprites?.other?.['official-artwork']?.front_default} alt=`Pokemon: ${pokemon.name}` loading="lazy">
+        <article class="m-2 flex gap-2 justify-center">
+          {
+            pokemon.types.map((type) => (
+              <PokemonsType type={type.type.name} />
+            ))
+          }
+        </article>
+        <h1><strong>Height </strong>{pokemon.height}m</h1>
+        <h1><strong>Weight </strong>{pokemon.weight}kg</h1>
+        <article>
+
+        </article>
+      </div>
+      <div class="text-center">
+
+      </div>
     </article>
   </main>
 </Layout>
