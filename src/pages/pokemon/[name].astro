@@ -20,7 +20,7 @@ const pokemon = await getPokemonByName(name || 'undefined')
 ---
 
 <Layout title={`Pokemon Web Page | ${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`}>
-  <main class="m-auto">
+  <main class="py-1 px-2">
     <article class="border border-black px-1 ">
       <img class=" w-60" src={pokemon.sprites?.front_default} alt=`Pokemon: ${pokemon.name}` loading="lazy">
       <h1>{`${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`}</h1>

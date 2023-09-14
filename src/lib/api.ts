@@ -14,7 +14,7 @@ export async function getAllPokedex () {
   return pokedex
 }
 
-export async function getPokemonWithLimit(offset:number) {
+export async function getPokedexWithLimit(offset:number) {
   const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=50&offset=${offset}`)
   const limitedPokedex: Pokedex = await res.json()
   return limitedPokedex

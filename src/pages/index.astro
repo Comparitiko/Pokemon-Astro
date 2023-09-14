@@ -1,32 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import PokemonCard from '../components/PokemonCard.astro'
-import Button from '../components/Button.astro'
 import { type Result } from '../types/API-pokedex'
-import {getPokemonWithLimit} from '../lib/api'
+import {getPokedexWithLimit} from '../lib/api'
 
 let offset = 0
 
-const limitedPokedex = await getPokemonWithLimit(offset)
-
-const pages = Math.ceil(limitedPokedex.count / 50)
-
-const pageNumbers = Array.from({ length: pages }, (_, index) => index + 1)
+const Pokedex = await getPokedexWithLimit(offset)
 ---
 
 <Layout title="Pokemon Web Page">
 	<main class="py-1 px-2">
 		<div class="grid grid-cols-5 gap-1">
 			{	
-				limitedPokedex.results.map((pokemon: Result) => (				
+				Pokedex.results.map((pokemon: Result) => (				
 					<PokemonCard pokemonName={pokemon.name} />
-				))
-			}
-		</div>
-		<div class="flex my-2 items-center gap-4">
-			{
-				pageNumbers.map((pageNumber: number) => (
-					<Button pageNumber={pageNumber} />
 				))
 			}
 		</div>
