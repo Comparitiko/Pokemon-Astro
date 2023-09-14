@@ -4,18 +4,18 @@ import {getAllTypes, getTypeData} from '../../lib/api'
 import Layout from '../../layouts/Layout.astro'
 
 export async function getStaticPaths() {
-  const types: Types = await getAllTypes()
-  return types.results.map((Pokemontype: Result) => ({
+  const pokemonsTypes: Types = await getAllTypes()
+  return pokemonsTypes.results.map((Pokemontype: Result) => ({
     params: {type: Pokemontype.name},
   }))
 }
 
 const type = (Astro.params).type
 
-if (type === undefined) {Astro.redirect('/404')}
-const typeData = await getTypeData(type || 'undefined')
+if (type === undefined) { return Astro.redirect('/404')}
+const typeData = await getTypeData(type)
 
 ---
-<Layout title={`Pokemon Web Page | ${type[0].toUpperCase()}`}>
+<Layout title={`Pokemon Web Page | ${type[0].toUpperCase()}${type.slice(1)}`}>
   <h1>{type}</h1>
 </Layout>

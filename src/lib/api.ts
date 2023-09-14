@@ -15,19 +15,19 @@ export async function getAllPokedex () {
 }
 
 export async function getPokedexWithLimit(offset:number) {
-  const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=50&offset=${offset}`)
+  const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=60&offset=${offset}`)
   const limitedPokedex: Pokedex = await res.json()
   return limitedPokedex
 }
 
 export async function getAllTypes () {
   const res = await fetch(`https://pokeapi.co/api/v2/type/`)
-  const type: Type = await res.json()
+  const type: Types = await res.json()
   return type
 }
 
 export async function getTypeData(type:string) {
   const res = await fetch(`https://pokeapi.co/api/v2/type/${type}`)
-  const typeData: Types = await res.json()
+  const typeData: Type = await res.json()
   return typeData
 }

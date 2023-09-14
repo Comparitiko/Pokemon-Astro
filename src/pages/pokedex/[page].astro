@@ -1,0 +1,46 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import PokemonCard from '../../components/PokemonCard.astro'
+import { type Result } from '../../types/API-pokedex'
+import { getAllPokedex, getPokedexWithLimit } from "../../lib/api"
+
+export async function getStaticPaths() {
+  const Pokedex = await getAllPokedex()
+  const numberButtons = Math.ceil(Pokedex.count / 60)
+  const BtnsArray = Array.from({ length: numberButtons }, (_, index) => index + 1)
+  return BtnsArray.map(btn => ({
+      params: {page: btn},
+  }))
+}
+const stringPage = (Astro.params).page
+
+if (typeof stringPage !== 'string') return Astro.redirect('/404')
+
+const page = parseInt(stringPage)
+
+let offset = (page - 1) * 60
+
+const Pokedex = await getPokedexWithLimit(offset)
+
+const numberButtons = Math.ceil(Pokedex.count / 60)
+
+---
+
+<Layout title="Pokemon Web Page">
+  <main class="py-1 px-2">
+		<div class="grid grid-cols-2 gap-1 xl:grid-cols-6 md:grid-cols-4">
+			{	
+				Pokedex.results.map((pokemon: Result) => (				
+					<PokemonCard pokemonName={pokemon.name} />
+				))
+			}
+		</div>
+		<div class="flex flex-wrap gap-2 justify-center my-2">
+			{
+				Array.from({ length: numberButtons }, (_, index) => index + 1).map((buttonNumber) => (
+					<a href={`/pokedex/${buttonNumber}`}><button class="border w-12 h-12 hover:bg-slate-400">{buttonNumber}</button></a>
+				))
+			}
+		</div>
+	</main>
+</Layout>
