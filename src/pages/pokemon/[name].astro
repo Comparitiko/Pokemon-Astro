@@ -1,4 +1,5 @@
 ---
+import BaseStats from '../../components/BaseStats.astro'
 import PokemonsType from '../../components/PokemonsType.astro'
 import Layout from '../../layouts/Layout.astro'
 import {getAllPokedex, getPokemonByName} from '../../lib/api'
@@ -11,21 +12,18 @@ export async function getStaticPaths() {
   }))
 }
 
-
-
 const name = (Astro.params).name
 
 if (name === undefined) {Astro.redirect('/404')}
 const pokemon = await getPokemonByName(name || 'undefined')
-
 ---
 
 <Layout title={`Pokemon Web Page | ${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`}>
   <main class="py-1 px-2">
-    <article class="border border-black px-1 grid justify-center">
+    <article class="border border-black px-3 grid justify-center py-3">
       <div class="flex flex-col text-center">
         <h1 class="text-6xl font-bold">{`${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`}</h1>
-        <img class=" w-60" src={pokemon.sprites?.other?.['official-artwork']?.front_default} alt=`Pokemon: ${pokemon.name}` loading="lazy">
+        <img class="mx-auto w-80" src={pokemon.sprites?.other?.['official-artwork']?.front_default} alt=`Pokemon: ${pokemon.name}` loading="lazy">
         <article class="m-2 flex gap-2 justify-center">
           {
             pokemon.types.map((type) => (
@@ -33,16 +31,14 @@ const pokemon = await getPokemonByName(name || 'undefined')
             ))
           }
         </article>
-        <h1><strong>Height </strong>{pokemon.height}m</h1>
-        <h1><strong>Weight </strong>{pokemon.weight}kg</h1>
-        <article>
-
-        </article>
+        <h1 class=" text-lg"><strong>Height </strong>{pokemon.height / 10}m</h1>
+        <h1 class=" text-lg"><strong>Weight </strong>{pokemon.weight / 10}kg</h1>
       </div>
-      <div class="flex gap-2 justify-center my-2">
+      <BaseStats pokemon={pokemon}/>
+      <div class="flex gap-20 justify-center my-2">
       {
         pokemon.abilities.map(ability => (
-          <h1 class="text-xl font-semibold border">{`${ability.ability?.name[0].toUpperCase()}${ability.ability?.name.slice(1)}`}</h1>  
+          <h1 class="text-xl font-semibold">{`${ability.ability?.name[0].toUpperCase()}${ability.ability?.name.slice(1)}`}</h1>  
         ))
       }
       </div>
