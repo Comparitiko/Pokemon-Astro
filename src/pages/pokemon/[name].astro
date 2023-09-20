@@ -42,7 +42,7 @@ const pokemon = await getPokemonByName(name || 'undefined')
       <div class="flex gap-2 justify-center my-2">
       {
         pokemon.abilities.map(ability => (
-          <h1 class="text-xl font-semibold border">{`${ability.ability?.name[0].toUpperCase()}${ability.ability?.name.slice(1)}`}</h1>  
+          <h1 class="text-xl font-semibold">{`${ability.ability?.name[0].toUpperCase()}${ability.ability?.name.slice(1)}`}</h1>  
         ))
       }
       </div>
