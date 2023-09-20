@@ -1,0 +1,39 @@
+---
+import type { Pokemon } from '../types/API-pokemon'
+
+interface Props {
+  pokemon: Pokemon
+}
+
+const {pokemon} = Astro.props
+---
+
+<div class="text-center m-5">
+  <strong class="text-xl">Base Stats</strong>
+  <article class="flex gap-6 p-4 border border-black my-2">
+    <div class="grid gap-2">
+      <strong>HP</strong>
+      <h1>{pokemon.stats[0].base_stat}</h1>
+    </div>
+    <div class="grid gap-2">
+      <strong>Attack</strong>
+      <h1>{pokemon.stats[1].base_stat}</h1>
+    </div>
+    <div class="grid gap-2">
+      <strong>Defense</strong>
+      <h1>{pokemon.stats[2].base_stat}</h1>
+    </div>
+    <div class="grid gap-2">
+      <strong>Sp. Attack</strong>
+      <h1>{pokemon.stats[3].base_stat}</h1>
+    </div>
+    <div class="grid gap-2">
+      <strong>Sp. Defense</strong>
+      <h1>{pokemon.stats[4].base_stat}</h1>
+    </div>
+    <div class="grid gap-2">
+      <strong>Speed</strong>
+      <h1>{pokemon.stats[5].base_stat}</h1>
+    </div>
+  </article>
+</div>
