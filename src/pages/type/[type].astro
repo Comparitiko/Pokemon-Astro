@@ -2,6 +2,7 @@
 import {type Types, type Result} from '../../types/API-types'
 import {getAllTypes, getTypeData} from '../../lib/api'
 import Layout from '../../layouts/Layout.astro'
+import PokemonsType from '../../components/PokemonsType.astro'
 
 export async function getStaticPaths() {
   const pokemonsTypes: Types = await getAllTypes()
@@ -17,5 +18,14 @@ const typeData = await getTypeData(type)
 
 ---
 <Layout title={`Pokemon Web Page | ${type[0].toUpperCase()}${type.slice(1)}`}>
-  <h1>{type}</h1>
+  <article class="">
+    <h1>Double Damage to</h1>
+    <div class="flex gap-3 text-center">
+      {
+        typeData.damage_relations.double_damage_to.map(type => (
+          <PokemonsType type={type.name}/>
+        ))
+      }
+    </div>
+  </article>
 </Layout>
