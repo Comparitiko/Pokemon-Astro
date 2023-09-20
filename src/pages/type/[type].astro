@@ -18,11 +18,31 @@ const typeData = await getTypeData(type)
 
 ---
 <Layout title={`Pokemon Web Page | ${type[0].toUpperCase()}${type.slice(1)}`}>
-  <article class="">
-    <h1>Double Damage to</h1>
+  <article class="grid justify-center text-center gap-2 my-10">
+    <strong class="text-3xl">x2</strong>
     <div class="flex gap-3 text-center">
       {
         typeData.damage_relations.double_damage_to.map(type => (
+          <PokemonsType type={type.name}/>
+        ))
+      }
+    </div>
+  </article>
+  <article class="grid justify-center text-center gap-2 my-10">
+    <strong class="text-3xl">1/2</strong>
+    <div class="flex gap-3 text-center">
+      {
+        typeData.damage_relations.half_damage_to.map(type => (
+          <PokemonsType type={type.name}/>
+        ))
+      }
+    </div>
+  </article>
+  <article class="grid justify-center text-center gap-2 my-10">
+    <strong class="text-3xl">x0</strong>
+    <div class="flex gap-3 text-center">
+      {
+        typeData.damage_relations.no_damage_to.map(type => (
           <PokemonsType type={type.name}/>
         ))
       }
