@@ -8,9 +8,9 @@ interface Props {
 const {pokemon} = Astro.props
 ---
 
-<div class="text-center m-5">
+<div class="text-center m-5 ">
   <strong class="text-xl">Base Stats</strong>
-  <article class="flex gap-6 p-4 border border-black my-2">
+  <article class="flex gap-2 p-1 border border-black my-3 xl:gap-6 xl:p-6">
     <div class="grid gap-2">
       <strong>HP</strong>
       <h1>{pokemon.stats[0].base_stat}</h1>

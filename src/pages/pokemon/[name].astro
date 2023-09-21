@@ -19,7 +19,7 @@ const pokemon = await getPokemonByName(name || 'undefined')
 ---
 
 <Layout title={`Pokemon Web Page | ${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`}>
-  <main class="py-1 px-2">
+  <main class="py-1 px-2 w-screen">
     <article class="px-3 grid justify-center py-3">
       <div class="flex flex-col text-center">
         <h1 class="text-6xl font-bold">{`${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`}</h1>
