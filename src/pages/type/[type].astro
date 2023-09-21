@@ -25,7 +25,7 @@ const typeData = await getTypeData(type)
     }
   ]}>
     <strong class="text-3xl">x2</strong>
-    <div class="flex flex-wrap gap-3 text-center mx-10">
+    <div class="grid grid-cols-2 gap-3 text-center mx-10">
       {
         typeData.damage_relations.double_damage_to.map(type => (
           <PokemonsType type={type.name}/>
@@ -35,7 +35,7 @@ const typeData = await getTypeData(type)
   </article>
   <article class="grid justify-center text-center gap-2 my-10">
     <strong class="text-3xl">1/2</strong>
-    <div class="flex flex-wrap gap-3 text-center mx-10">
+    <div class="grid grid-cols-2 gap-3 text-center mx-10">
       {
         typeData.damage_relations.half_damage_to.map(type => (
           <PokemonsType type={type.name}/>
@@ -50,7 +50,7 @@ const typeData = await getTypeData(type)
     }
   ]}>
     <strong class="text-3xl">x0</strong>
-    <div class="flex flex-wrap gap-3 text-center mx-10">
+    <div class="grid grid-cols-2 gap-3 text-center mx-10">
       {
         typeData.damage_relations.no_damage_to.map(type => (
           <PokemonsType type={type.name}/>
