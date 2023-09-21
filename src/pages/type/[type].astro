@@ -18,7 +18,12 @@ const typeData = await getTypeData(type)
 
 ---
 <Layout title={`Pokemon Web Page | ${type[0].toUpperCase()}${type.slice(1)}`}>
-  <article class="grid justify-center text-center gap-2 my-10">
+  <article class:list={[
+    "grid justify-center text-center gap-2 my-10",
+    {
+      "hidden": !typeData.damage_relations.double_damage_to[0]
+    }
+  ]}>
     <strong class="text-3xl">x2</strong>
     <div class="flex gap-3 text-center">
       {
@@ -38,7 +43,12 @@ const typeData = await getTypeData(type)
       }
     </div>
   </article>
-  <article class="grid justify-center text-center gap-2 my-10">
+  <article class:list={[
+    "grid justify-center text-center gap-2 my-10",
+    {
+      "hidden": !typeData.damage_relations.no_damage_to[0]
+    }
+  ]}>
     <strong class="text-3xl">x0</strong>
     <div class="flex gap-3 text-center">
       {
