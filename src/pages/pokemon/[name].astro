@@ -4,6 +4,8 @@ import PokemonsType from '../../components/PokemonsType.astro'
 import Layout from '../../layouts/Layout.astro'
 import {getAllPokedex, getPokemonByName} from '../../lib/api'
 import {type Result} from '../../types/API-pokedex'
+import BackArrow from '../../assets/left-arrow.png'
+import { Image } from "astro:assets";
 
 export async function getStaticPaths() {
   const pokedex = await getAllPokedex()
@@ -19,7 +21,10 @@ const pokemon = await getPokemonByName(name || 'undefined')
 ---
 
 <Layout title={`Pokemon Web Page | ${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`}>
-  <main class="py-1 px-2 w-screen">
+  <main class="py-1 px-2 flex items-center justify-center gap-2">
+    <div class="w-12">
+      <a href="javascript: history.go(-1)"><Image title="Back" src={BackArrow} alt="Arrow"></a>
+    </div>
     <article class="px-3 grid justify-center py-3">
       <div class="flex flex-col text-center">
         <h1 class="text-6xl font-bold">{`${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`}</h1>
