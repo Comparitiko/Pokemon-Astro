@@ -22,8 +22,8 @@ const pokemon = await getPokemonByName(name || 'undefined')
 
 <Layout title={`Pokemon Web Page | ${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`}>
   <main class="py-1 px-2 flex items-center justify-center gap-2">
-    <div class="w-12">
-      <a href="javascript: history.go(-1)"><Image title="Back" src={BackArrow} alt="Arrow"></a>
+    <div class="hidden xl:contents lg:w-12 lg:contents ">
+      <a href="javascript: history.go(-1)"><Image class="w-12" title="Back" src={BackArrow} alt="Arrow"></a>
     </div>
     <article class="px-3 grid justify-center py-3">
       <div class="flex flex-col text-center">
@@ -46,6 +46,9 @@ const pokemon = await getPokemonByName(name || 'undefined')
           <h1 class="text-xl font-semibold">{`${ability.ability?.name[0].toUpperCase()}${ability.ability?.name.slice(1)}`}</h1>  
         ))
       }
+      </div>
+      <div class="w-12 mx-auto xl:hidden lg:hidden">
+        <a href="javascript: history.go(-1)"><Image title="Back" src={BackArrow} alt="Arrow"></a>
       </div>
     </article>
   </main>
