@@ -22,7 +22,7 @@ const pokemon = await getPokemonByName(name || 'undefined')
 
 <Layout title={`Pokemon Web Page | ${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`}>
   <main class="py-1 px-2 flex items-center justify-center gap-2">
-    <div class="hidden xl:contents lg:w-12 lg:contents ">
+    <div class="hidden xl:contents">
       <a href="javascript: history.go(-1)"><Image class="w-12" title="Back" src={BackArrow} alt="Arrow"></a>
     </div>
     <article class="px-3 grid justify-center py-3">
@@ -40,15 +40,12 @@ const pokemon = await getPokemonByName(name || 'undefined')
         <h1 class=" text-lg"><strong>Weight </strong>{pokemon.weight / 10}kg</h1>
       </div>
       <BaseStats pokemon={pokemon}/>
-      <div class="flex gap-20 justify-center my-2">
+      <div class="grid xl:flex xl:gap-20 xl:justify-center lg:gap-20 lg:justify-center lg:flex gap-2 text-center my-2">
       {
         pokemon.abilities.map(ability => (
           <h1 class="text-xl font-semibold">{`${ability.ability?.name[0].toUpperCase()}${ability.ability?.name.slice(1)}`}</h1>  
         ))
       }
-      </div>
-      <div class="w-12 mx-auto xl:hidden lg:hidden">
-        <a href="javascript: history.go(-1)"><Image title="Back" src={BackArrow} alt="Arrow"></a>
       </div>
     </article>
   </main>
