@@ -18,8 +18,8 @@ const typeData = await getTypeData(type)
 
 ---
 <Layout title={`Pokemon Web Page | ${type[0].toUpperCase()}${type.slice(1)}`}>
-  <main class="flex items-center gap-20 justify-center">
-    <article class="my-10">
+  <main class="xl:flex grid items-center gap-20 justify-center">
+    <article class="xl:m-0 mx-auto mt-10">
       <PokemonsType type={type} />
     </article>
     <article>
