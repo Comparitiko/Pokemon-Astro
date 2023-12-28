@@ -28,7 +28,7 @@ const numberButtons = Math.ceil(Pokedex.count / 60)
 
 <Layout title="Pokemon Web Page">
   <main class="py-1 px-2">
-		<div class="grid grid-cols-2 gap-1 xl:grid-cols-6 md:grid-cols-4">
+		<div class="grid grid-cols-2 gap-1 xl:grid-cols-5 md:grid-cols-4">
 			{	
 				Pokedex.results.map((pokemon: Result) => (				
 					<PokemonCard pokemonName={pokemon.name} />
