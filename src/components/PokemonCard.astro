@@ -14,7 +14,7 @@ const pokemon:Pokemon = await res.json()
 const fixedPokemonName = `${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`
 ---
 
-<article class=" border py-2 grid gap-2 justify-center items-center text-center hover:bg-slate-400 w-auto h-64">
+<article class=" border py-3 grid gap-1 justify-center items-center text-center hover:bg-slate-400 w-auto h-64">
   <a title={`Watch ${pokemonName} data`} href={`/pokemon/${pokemonName}`}>
     <strong>{`#${pokemon.id}`}</strong>
     <img class="w-24 h-24 my-4 mx-auto" src={ 
@@ -22,7 +22,7 @@ const fixedPokemonName = `${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1
     } 
     alt="Pokemon without image">
   </a>
-  <h1 class="text-xl font-semibold">{fixedPokemonName}</h1>
+  <h2 class="text-xl font-semibold">{fixedPokemonName}</h2>
   <div class="flex gap-2 justify-center">
     {
       pokemon.types.map((type:Type) => (
